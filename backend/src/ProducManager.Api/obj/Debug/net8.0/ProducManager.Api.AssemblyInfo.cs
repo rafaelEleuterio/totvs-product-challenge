@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProducManager.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+077d1dcdc558008dc07928eb2cbb675c7f4d1ae9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a4e5060037a6cf3f692825987db121fa7ddbc2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProducManager.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProducManager.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

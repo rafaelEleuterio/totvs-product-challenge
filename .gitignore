@@ -1,2 +1,21 @@
 # Visual Studio
 .vs/
+/backend/src/ProducManager.Api/bin/Debug/net8.0
+/backend/src/ProductManager.Application/bin/Debug/net8.0
+/backend/src/ProductManager.Domain/bin/Debug/net8.0
+/backend/src/ProductManager.Infrastructure/bin/Debug/net8.0
+/backend/src/ProductManager.Infrastructure/obj/Debug/net8.0
+/backend/src/ProductManager.Domain/obj/Debug/net8.0
+/backend/src/ProducManager.Api/obj
+/backend/src/ProductManager.Application/obj/Debug/net8.0
+/backend/src/ProducManager.Api/obj/Debug/net8.0/ProducManager.Api.AssemblyInfoInputs.cache
+/backend/src/ProducManager.Api/obj/Debug/net8.0/ProducManager.Api.csproj.AssemblyReference.cache
+/backend/src/ProducManager.Api/obj/Debug/net8.0/rpswa.dswa.cache.json
+/backend/src/ProductManager.Application/obj/Debug/net8.0/ProductManager.Application.AssemblyInfoInputs.cache
+/backend/src/ProductManager.Infrastructure/obj/Debug/net8.0/ProductManager.Infrastructure.AssemblyInfo.cs
+/backend/src/ProductManager.Infrastructure/obj/Debug/net8.0/ProductManager.Infrastructure.csproj.AssemblyReference.cache
+/backend/src/ProductManager.Infrastructure/obj/Debug/net8.0/ProductManager.Infrastructure.AssemblyInfoInputs.cache
+/backend/src/ProductManager.Domain/obj/Debug/net8.0/ProductManager.Domain.AssemblyInfo.cs
+/backend/src/ProductManager.Domain/obj/Debug/net8.0/ProductManager.Domain.AssemblyInfoInputs.cache
+/backend/src/ProductManager.Application/obj/Debug/net8.0/ProductManager.Application.AssemblyInfo.cs
+/backend/src/ProducManager.Api/obj/Debug/net8.0/ProducManager.Api.AssemblyInfo.cs

@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Services
 builder.Services.AddControllers();
 
+// Apenas para este caso challenge, em um cenário real, o ideal seria usar um banco de dados relacional, como SQL Server, PostgreSQL, etc.
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseInMemoryDatabase("TOTVS-product-challend-DB"));
 

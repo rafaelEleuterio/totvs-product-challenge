@@ -1,7 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using ProductManager.Application.Interfaces;
 using ProductManager.Application.Services;
 using ProductManager.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+using ProductManager.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseInMemoryDatabase("TOTVS-product-challend-DB"));
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +36,7 @@ app.UseCors("AllowAngular");
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapControllers();
+app.UseHttpsRedirection();
+app.MapControllers(); 
 
 app.Run();

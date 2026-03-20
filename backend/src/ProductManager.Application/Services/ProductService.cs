@@ -1,35 +1,36 @@
 ﻿using ProductManager.Application.DTOs;
 using ProductManager.Application.Interfaces;
-using ProductManager.Infrastructure.Data;
+using ProductManager.Domain.Entities;
 
 namespace ProductManager.Application.Services;
 public class ProductService : IProductService
 {
-    private readonly AppDbContext _context;
+    private readonly IProductRepository _repository;
 
-    public ProductService(AppDbContext context)
+    public ProductService(IProductRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     public async Task<IEnumerable<ProductDto>> GetAllAsync()
     {
-        return await _context.Products
-            .Select(p => new ProductDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Price = p.Price,
-                Stock = p.Stock
-            })
-            .ToListAsync();
+        var products = await _repository.GetAllAsync();
+
+        return products.Select(p => new ProductDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Price = p.Price,
+            Stock = p.Stock
+        });
     }
 
     public async Task<ProductDto?> GetByIdAsync(Guid id)
     {
-        var product = await _context.Products.FindAsync(id);
+        var product = await _repository.GetByIdAsync(id);
 
-        if (product == null) return null;
+        if (product is null)
+            return null;
 
         return new ProductDto
         {
@@ -50,33 +51,41 @@ public class ProductService : IProductService
             Stock = dto.Stock
         };
 
-        _context.Products.Add(product);
-        await _context.SaveChangesAsync();
+        await _repository.AddAsync(product);
+        await _repository.SaveChangesAsync();
 
-        dto.Id = product.Id;
-        return dto;
+        return new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Stock = product.Stock
+        };
     }
 
     public async Task UpdateAsync(Guid id, ProductDto dto)
     {
-        var product = await _context.Products.FindAsync(id);
+        var product = await _repository.GetByIdAsync(id);
 
-        if (product == null) return;
+        if (product is null)
+            return;
 
         product.Name = dto.Name;
         product.Price = dto.Price;
         product.Stock = dto.Stock;
 
-        await _context.SaveChangesAsync();
+        await _repository.UpdateAsync(product);
+        await _repository.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(Guid id)
     {
-        var product = await _context.Products.FindAsync(id);
+        var product = await _repository.GetByIdAsync(id);
 
-        if (product == null) return;
+        if (product is null)
+            return;
 
-        _context.Products.Remove(product);
-        await _context.SaveChangesAsync();
+        await _repository.DeleteAsync(product);
+        await _repository.SaveChangesAsync();
     }
 }

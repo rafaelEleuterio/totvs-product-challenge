@@ -9,8 +9,8 @@ COPY . .
 WORKDIR /src/ProducManager.Api
 
 # Restaura e publica
-RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet restore "ProductManager.Api.csproj"
+RUN dotnet publish "ProductManager.Api.csproj" -c Release -o /app/publish
 
 # Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
@@ -20,4 +20,4 @@ COPY --from=build /app/publish .
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "ProducManager.Api.dll"]
+ENTRYPOINT ["dotnet", "ProductManager.Api.dll"]

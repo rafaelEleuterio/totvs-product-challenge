@@ -3,8 +3,13 @@ FROM node:18 AS build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build
+RUN npm run build -- --base-href / --deploy-url /
 
-# Serve com nginx
+
 FROM nginx:alpine
-COPY --from=build /app/dist/product-manager /usr/share/nginx/html
+
+RUN rm -rf /usr/share/nginx/html/*
+# Serve com nginx
+COPY --from=build /app/dist/product-manager-ui/browser /usr/share/nginx/html
+
+EXPOSE 80

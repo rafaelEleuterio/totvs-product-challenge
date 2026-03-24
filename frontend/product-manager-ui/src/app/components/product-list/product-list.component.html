@@ -1,1 +1,25 @@
-<p>product-list works!</p>
+<div class="container">
+  <h1>📦 Produtos</h1>
+
+  <div class="actions">
+    <button routerLink="/create" class="btn primary">+ Novo Produto</button>
+  </div>
+
+  <div *ngIf="products.length === 0" class="empty">
+    Nenhum produto cadastrado.
+  </div>
+
+  <div class="grid">
+    <div class="card" *ngFor="let p of products">
+      <h3>{{ p.name }}</h3>
+
+      <p><strong>Preço:</strong> R$ {{ p.price }}</p>
+      <p><strong>Estoque:</strong> {{ p.stock }}</p>
+
+      <div class="card-actions">
+        <button [routerLink]="['/edit', p.id]" class="btn edit">Editar</button>
+        <button (click)="delete(p.id)" class="btn delete">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>

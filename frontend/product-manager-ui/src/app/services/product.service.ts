@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  private apiUrl = 'https://localhost:5000/api/product'; // ajuste
+  private apiUrl = 'http://localhost:5000/api/products';
 
   constructor(private http: HttpClient) {}
 
